@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+
+  <Fragment>
+    <util:RegistrySearch
+      Id="VCPLUSPLUS"
+      Variable="VCPLUSPLUS"
+      Root="HKLM"
+      Key="SOFTWARE\Microsoft\VisualStudio\14.0\VC\Runtimes\x64"
+      Value="Installed"
+      Result="value" />
+  </Fragment>
+
+  <Fragment>
+    <util:RegistrySearchRef Id="VCPLUSPLUS"/>
+    <WixVariable Id="VcPPRedistDetectCondition" Value="VCPLUSPLUS >= 1" Overridable="yes" />
+    <WixVariable Id="VcPPRedistInstallCondition" Value="" Overridable="yes" />
+    <WixVariable Id="VcPPRedistPackageDirectory" Value="VisualCPlusPlus\" Overridable="yes" />
+    <PackageGroup Id="VisualCPlusPlusRedist">
+      <ExePackage
+          DisplayName="Microsoft Visual C++ 2014"
+          InstallCommand="/q /norestart /ChainingPackage "[WixBundleName]" /log "[VcRedistFullLog].html""
+          RepairCommand="/q /norestart /repair /ChainingPackage "[WixBundleName]" /log "[VcRedistFullLog].html""
+          UninstallCommand="/uninstall /q /norestart /ChainingPackage "[WixBundleName]" /log "[VcRedistFullLog].html""
+          PerMachine="yes"
+          DetectCondition="!(wix.VcPPRedistDetectCondition)"
+          InstallCondition="!(wix.VcPPRedistInstallCondition)"
+          Id="VisualCPlusPlusRedist"
+          Vital="yes"
+          Permanent="yes"
+          LogPathVariable="VcRedistFullLog"
+          Compressed="no"
+          Name="!(wix.VcPPRedistPackageDirectory)vcredist_x64.exe"
+          SourceFile="!(wix.VcPPRedistPackageDirectory)vcredist_x64.exe"
+          DownloadUrl="https://aka.ms/vs/16/release/VC_redist.x64.exe"
+          >
+     </ExePackage>
+    </PackageGroup>
+  </Fragment>
+</Wix>

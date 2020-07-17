@@ -1,0 +1,12 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers\{8266f6e1-0b82-43a5-a253-3a0b99314178}]
+@="SCZ_CP"
+
+[HKEY_CLASSES_ROOT\CLSID\{8266f6e1-0b82-43a5-a253-3a0b99314178}]
+@="SCZ_CP"
+
+[HKEY_CLASSES_ROOT\CLSID\{8266f6e1-0b82-43a5-a253-3a0b99314178}\InprocServer32]
+@="SCZ_CP.dll"
+"ThreadingModel"="Apartment"
+

@@ -1,0 +1,5 @@
+LIBRARY SCZ_CP_Filter.dll
+
+EXPORTS
+    DllCanUnloadNow                                 PRIVATE
+    DllGetClassObject                               PRIVATE

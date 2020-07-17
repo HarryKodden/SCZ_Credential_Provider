@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* * * * * * * * * * * * * * * * * * * * *
+**
+** Copyright 2012 Dominik Pretzsch
+** 
+**    Licensed under the Apache License, Version 2.0 (the "License");
+**    you may not use this file except in compliance with the License.
+**    You may obtain a copy of the License at
+** 
+**        http://www.apache.org/licenses/LICENSE-2.0
+** 
+**    Unless required by applicable law or agreed to in writing, software
+**    distributed under the License is distributed on an "AS IS" BASIS,
+**    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+**    See the License for the specific language governing permissions and
+**    limitations under the License.
+**
+** * * * * * * * * * * * * * * * * * * */
+-->
+<Include>
+  <?define Version = "0.1" ?>
+
+  <?define EndpointName = "SCZ" ?>
+  <?define ProviderRegistryGUID = "8266f6e1-0b82-43a5-a253-3a0b99314178" ?>
+  <?define ProviderFilterRegistryGUID = "6daebf20-4f56-4d43-86f3-f75ce2669aa7" ?>
+  
+  <?define BaseProductName = "$(var.EndpointName) Credential Provider for Windows" ?>
+  <?define Manufacturer = "SURF" ?>
+  
+  <?define Publisher = "SURF" ?>
+  <?define AppURLInfoAbout = "https://surf.nl" ?>
+  
+  <?define ProductFolderName = "$(var.EndpointName) Credential Provider" ?>
+  <?define SimpleProductName = "$(var.EndpointName)-CP" ?>
+  
+  <?if $(var.Platform) = x64 ?>
+    <?define ProductName = "$(var.BaseProductName) $(var.Version) (64 bit)" ?>
+    <?define Win64 = "yes" ?>
+    <?define PlatformProgramFilesFolder = "ProgramFiles64Folder" ?>
+    <?define PlatformSystemFolder = "System64Folder" ?>
+  <?else ?>
+    <?define ProductName = "$(var.BaseProductName) $(var.Version)" ?>
+    <?define Win64 = "no" ?>
+    <?define PlatformProgramFilesFolder = "ProgramFilesFolder" ?>
+    <?define PlatformSystemFolder = "SystemFolder" ?>
+  <?endif ?>
+</Include>
