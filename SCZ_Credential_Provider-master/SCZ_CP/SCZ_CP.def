@@ -1,0 +1,5 @@
+LIBRARY SCZ_CP.dll
+
+EXPORTS
+    DllCanUnloadNow                                 PRIVATE
+    DllGetClassObject                               PRIVATE
